@@ -113,6 +113,8 @@ MonoBehaviour:
   descriptionText: {fileID: 49651967200122554}
   artImage: {fileID: 4175578231010551444}
   cardBack: 0
+  Hand: {fileID: 0}
+  cardsInDeck: 0
 --- !u!114 &8869394070492625134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +795,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 170, y: 120}
+  m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3495348814861772411
 CanvasRenderer:
@@ -945,7 +947,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 34.2}
-  m_SizeDelta: {x: 180, y: 130}
+  m_SizeDelta: {x: 190, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4078588172004320455
 CanvasRenderer:

@@ -54,6 +54,12 @@ public class PlayerDeck : MonoBehaviour
         {
             cardInDeck4.SetActive(false);
         }
+
+        if(TurnSystem.startTurn == true)
+        {
+            StartCoroutine(Draw(1));
+            TurnSystem.startTurn = false;
+        }
     }
 
     IEnumerator StartGame()
@@ -68,12 +74,39 @@ public class PlayerDeck : MonoBehaviour
 
     public void ShuffleDeck()
     {
-        for (int i = 0; i < deckSize; i++)
+        for (int i = 0; i < 20; i++)
         {
             container = deck[i];
             int randomIndex = Random.Range(i, deckSize);
             deck[i] = deck[randomIndex];
             deck[randomIndex] = container;
+        }
+    }
+
+    IEnumerator Draw(int x)
+    {
+        for(int i = 0; i < x; i++)
+        {
+            if(deckSize >= 1)
+            {
+                yield return new WaitForSeconds(1);
+
+                Instantiate(CardToHand, transform.position, transform.rotation);
+            }
+            else
+            {
+                ShuffleDeck();
+                deckSize = 20;
+                cardInDeck1.SetActive(true);
+                cardInDeck2.SetActive(true);
+                cardInDeck3.SetActive(true);
+                cardInDeck4.SetActive(true);
+
+                yield return new WaitForSeconds(1);
+
+                Instantiate(CardToHand, transform.position, transform.rotation);
+            }
+
         }
     }
 }
