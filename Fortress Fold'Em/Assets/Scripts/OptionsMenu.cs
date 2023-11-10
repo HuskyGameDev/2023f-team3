@@ -4,12 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionSceen : MonoBehaviour
+public class OptionMenu : MonoBehaviour
 {
     public Toggle fullscreenTog;
     public List<ResItem> resolutions = new List<ResItem>();
     private int selectedResolution = 0;
     public TMP_Text resolutionText;
+    public GameObject optionsMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +43,9 @@ public class OptionSceen : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseOptions()
     {
-        
+        optionsMenu.SetActive(false);
     }
 
     public void resLeft()

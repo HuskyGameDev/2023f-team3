@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public GameObject optionsScreen;
+    public GameObject pauseMenu, optionsMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +18,23 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void StartGame()
+    public void Unpause()
     {
-        SceneManager.LoadScene("LevelSelect");
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenOptions()
     {
-        optionsScreen.SetActive(true);
+        optionsMenu.SetActive(true);
     }
+
     public void QuitGame()
     {
         Application.Quit();
