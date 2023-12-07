@@ -28,7 +28,7 @@ public class CardDatabase : MonoBehaviour
 
         cardList.Add(new Card(9, "Faerie", 1, 9, 1, "A magical being with ethereal wings. Heal 9 HP.", Resources.Load<Sprite>("Faerie")));
 
-        cardList.Add(new Card(10, "Gorgon", 2, 9, 3, "A creature with snakes for hair that can turn enemies to stone. Deal 9 Damage.", Resources.Load<Sprite>("Gorgon")));
+        cardList.Add(new Card(10, "Gorgon", 2, 15, 3, "A creature with snakes for hair that can turn enemies to stone. Deal 15 Damage.", Resources.Load<Sprite>("Gorgon")));
 
         cardList.Add(new Card(11, "Minotaur", 3, 17, 3, "A half-man, half-bull creature with great strength. Deal 17 Damage.", Resources.Load<Sprite>("Minotaur")));
 
@@ -96,18 +96,18 @@ public class CardDatabase : MonoBehaviour
 
         cardList.Add(new Card(43, "Spirit", 3, 8, 2, "A disembodied and ethereal entity. +8 Mana next Turn", Resources.Load<Sprite>("Spirit")));
 
-        cardList.Add(new Card(44, "Ent", 1, 10, 1, "A tree-like creature that protects the forest. Heal 10 HP.", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(44, "Ent", 1, 10, 1, "A tree-like creature that protects the forest. Heal 10 HP.", Resources.Load<Sprite>("Ent")));
 
-        cardList.Add(new Card(45, "Troll", 2, 16, 1, "A large and regenerative creature known for its toughness. Heal 16 HP.", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(45, "Troll", 2, 16, 1, "A large and regenerative creature known for its toughness. Heal 16 HP.", Resources.Load<Sprite>("Troll")));
 
-        cardList.Add(new Card(46, "Soldier", 1, 2, 4, "A trained and disciplined warrior. +2 Cards Next Turn", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(46, "Soldier", 1, 2, 4, "A trained and disciplined warrior. +2 Cards Next Turn", Resources.Load<Sprite>("Soldier")));
 
-        cardList.Add(new Card(47, "Poet", 1, 2, 2, "A creative soul who weaves magic through words. +2 Mana next Turn", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(47, "Poet", 1, 2, 2, "A creative soul who weaves magic through words. +2 Mana next Turn", Resources.Load<Sprite>("Poet")));
 
-        cardList.Add(new Card(48, "King", 3, 5, 4, "A powerful and authoritative ruler. +5 Cards Next Turn", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(48, "King", 3, 5, 4, "A powerful and authoritative ruler. +5 Cards Next Turn", Resources.Load<Sprite>("King")));
 
-        cardList.Add(new Card(49, "Wizard", 2, 5, 2, "A master of arcane and magical arts. +5 Mana Next Turn", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(49, "Wizard", 2, 5, 2, "A master of arcane and magical arts. +5 Mana Next Turn", Resources.Load<Sprite>("Wizard")));
 
-        cardList.Add(new Card(50, "Wyvern", 3, 25, 3, "A dragon-like creature with two legs and wings. Deal 25 Damage.", Resources.Load<Sprite>("TestImage1")));
+        cardList.Add(new Card(50, "Wyvern", 3, 25, 3, "A dragon-like creature with two legs and wings. Deal 25 Damage.", Resources.Load<Sprite>("Wyvern")));
     }
 }
