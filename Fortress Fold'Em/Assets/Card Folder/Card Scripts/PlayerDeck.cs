@@ -31,7 +31,7 @@ public class PlayerDeck : MonoBehaviour
 
         for(int i = 0; i < 20; i++)
         {
-            x = Random.Range(1, 44);
+            x = Random.Range(1, 51);
             deck[i] = CardDatabase.cardList[x];
         }
 
@@ -73,7 +73,7 @@ public class PlayerDeck : MonoBehaviour
         {
             if (handSize < 7)
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0);
 
                 handSize += 1;
                 Instantiate(CardToHand, transform.position, transform.rotation);
@@ -85,7 +85,7 @@ public class PlayerDeck : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            x = Random.Range(1, 44);
+            x = Random.Range(1, 51);
             deck[i] = CardDatabase.cardList[x];
         }
     }
@@ -94,7 +94,7 @@ public class PlayerDeck : MonoBehaviour
     {
         for(int i = 0; i < x; i++)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0);
 
             if (deckSize > 0)
             {
@@ -121,7 +121,6 @@ public class PlayerDeck : MonoBehaviour
                     Instantiate(CardToHand, transform.position, transform.rotation);
                 }
             }
-
         }
     }
 }

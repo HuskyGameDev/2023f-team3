@@ -16,8 +16,8 @@ public class EnemyHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxHPE = 300;
-        staticHPE = 300;
+        maxHPE = 250;
+        staticHPE = 250;
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class EnemyHP : MonoBehaviour
 
         hpText.text = hp + "/" + maxHPE;
 
-        if (hp < 0)
+        if (hp <= 0)
         {
             SceneManager.LoadScene("Victory_Scene");
         }

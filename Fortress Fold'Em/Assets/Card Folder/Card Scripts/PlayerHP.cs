@@ -26,9 +26,9 @@ public class PlayerHP : MonoBehaviour
         hp = staticHPP;
         Health.fillAmount = hp / maxHPP;
 
-        if(hp > maxHPP)
+        if (staticHPP > maxHPP)
         {
-            hp = maxHPP;
+            staticHPP = maxHPP;
         }
 
         hpText.text = hp + "/" + maxHPP;
