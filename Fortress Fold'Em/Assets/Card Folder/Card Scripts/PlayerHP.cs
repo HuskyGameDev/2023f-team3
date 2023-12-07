@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerHP : MonoBehaviour
     void Start()
     {
         maxHPP = 100;
-        staticHPP = 71;
+        staticHPP = 100;
     }
 
     // Update is called once per frame
@@ -31,5 +32,10 @@ public class PlayerHP : MonoBehaviour
         }
 
         hpText.text = hp + "/" + maxHPP;
+
+        if (hp <= 0)
+        {
+            SceneManager.LoadScene("Losing_Scene");
+        }
     }
 }

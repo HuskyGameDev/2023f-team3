@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class TurnSystem : MonoBehaviour
 {
     public bool isYourTurn;
-    public int yourTurn;
-    public int isEnemyTurn;
     public TMP_Text turnText;
+    [SerializeField] public GameObject endButton;
+    [SerializeField] public AudioSource getHit;
+    [SerializeField] public AudioSource endPTurn;
+    [SerializeField] public AudioSource endETurn;
 
-    public int maxMana;
-    public int currentMana;
     public TMP_Text manaText;
 
     public static bool startTurn;
@@ -21,11 +21,7 @@ public class TurnSystem : MonoBehaviour
     void Start()
     {
         isYourTurn = true;
-        yourTurn = 1;
-        isEnemyTurn = 0;
 
-        maxMana = 5;
-        currentMana = 5;
         startTurn = false;
     }
 
@@ -40,28 +36,37 @@ public class TurnSystem : MonoBehaviour
         {
             turnText.text = "Enemy Turn";
         }
-
-        manaText.text = currentMana + "/" + maxMana;
     }
 
     public void EndTurn()
     {
-        if (isYourTurn)
+        isYourTurn = false;
+        endButton.SetActive(false);
+        endPTurn.Play();
+
+        Invoke("EnemyTurn", 2);
+    }
+
+    public void EnemyTurn()
+    {
+        PlayerHP.staticHPP -= Random.Range(1, 31);
+        getHit.Play();
+        endETurn.Play();
+
+        isYourTurn = true;
+
+        if (ManaValue.staticM < ManaValue.maxM && ManaValue.addedM == 0)
         {
-            isYourTurn = false;
-            isEnemyTurn += 1;
-
-            currentMana = 0;
+            ManaValue.staticM = ManaValue.maxM;
         }
-        else
+        else if (ManaValue.addedM != 0)
         {
-            isYourTurn = true;
-            yourTurn += 1;
-
-            currentMana = maxMana;
-            startTurn = true;
+            ManaValue.staticM = ManaValue.maxM + ManaValue.addedM;
+            ManaValue.addedM = 0;
         }
 
+        startTurn = true;
+        endButton.SetActive(true);
     }
 
 }

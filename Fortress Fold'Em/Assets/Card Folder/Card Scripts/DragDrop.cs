@@ -5,37 +5,27 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    Transform parentToReturnTo;
+    public Transform parentToReturnTo = null;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentToReturnTo = transform.parent;
-        transform.SetParent(transform.root);
+        parentToReturnTo = this.transform.parent;
+        transform.SetParent(this.transform.root);
         transform.SetAsLastSibling();
-        Debug.Log("Start Drag");
+        //Debug.Log("Start Drag");
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
-        Debug.Log("Drag");
+        this.transform.position = eventData.position;
+        //Debug.Log("Drag");
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentToReturnTo);
-        Debug.Log("End Drag");
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Debug.Log("End Drag");
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 }

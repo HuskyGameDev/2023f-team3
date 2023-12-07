@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyHP : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class EnemyHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxHPE = 500;
-        staticHPE = 132;
+        maxHPE = 300;
+        staticHPE = 300;
     }
 
     // Update is called once per frame
@@ -31,5 +32,10 @@ public class EnemyHP : MonoBehaviour
         }
 
         hpText.text = hp + "/" + maxHPE;
+
+        if (hp < 0)
+        {
+            SceneManager.LoadScene("Victory_Scene");
+        }
     }
 }

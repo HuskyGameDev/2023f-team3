@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-using System.Reflection;
 
 public class DisplayCard : MonoBehaviour
 {
@@ -18,7 +17,6 @@ public class DisplayCard : MonoBehaviour
     public int type;
     public string cardDescription;
     public Sprite artwork;
-
 
     public TMP_Text nameText;
     public TMP_Text costText;
@@ -66,12 +64,12 @@ public class DisplayCard : MonoBehaviour
 
         if(this.tag == "Clone")
         {
-            displayCard[0] = PlayerDeck.staticDeck[cardsInDeck - 1];
-            cardsInDeck -= 1;
+            //Debug.Log(PlayerDeck.deckSize);
+            displayCard[0] = PlayerDeck.staticDeck[PlayerDeck.deckSize - 1];
             PlayerDeck.deckSize -= 1;
+            //Debug.Log(PlayerDeck.deckSize);
             cardBack = false;
             this.tag = "Untagged";
         }
-
     }
 }

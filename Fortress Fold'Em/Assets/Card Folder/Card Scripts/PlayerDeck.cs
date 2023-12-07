@@ -7,7 +7,9 @@ public class PlayerDeck : MonoBehaviour
     public List<Card> deck = new List<Card> ();
     private Card container;
     private int x;
+    public static int handSize;
     public static int deckSize;
+    public static int extraDraw;
     public static List<Card> staticDeck = new List<Card>();
 
     public GameObject cardInDeck1;
@@ -24,10 +26,12 @@ public class PlayerDeck : MonoBehaviour
     {
         x = 0;
         deckSize = 20;
+        handSize = 0;
+        extraDraw = 0;
 
         for(int i = 0; i < 20; i++)
         {
-            x = Random.Range(1, 4);
+            x = Random.Range(1, 44);
             deck[i] = CardDatabase.cardList[x];
         }
 
@@ -57,18 +61,23 @@ public class PlayerDeck : MonoBehaviour
 
         if(TurnSystem.startTurn == true)
         {
-            StartCoroutine(Draw(1));
+            StartCoroutine(Draw(2 + extraDraw));
+            extraDraw = 0;
             TurnSystem.startTurn = false;
         }
     }
 
     IEnumerator StartGame()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(1);
+            if (handSize < 7)
+            {
+                yield return new WaitForSeconds(1);
 
-            Instantiate(CardToHand, transform.position, transform.rotation);
+                handSize += 1;
+                Instantiate(CardToHand, transform.position, transform.rotation);
+            }
         }
     }
 
@@ -76,10 +85,8 @@ public class PlayerDeck : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            container = deck[i];
-            int randomIndex = Random.Range(i, deckSize);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = container;
+            x = Random.Range(1, 44);
+            deck[i] = CardDatabase.cardList[x];
         }
     }
 
@@ -87,24 +94,32 @@ public class PlayerDeck : MonoBehaviour
     {
         for(int i = 0; i < x; i++)
         {
-            if(deckSize >= 1)
-            {
-                yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
 
-                Instantiate(CardToHand, transform.position, transform.rotation);
+            if (deckSize > 0)
+            {
+                if (handSize < 7)
+                {
+                    handSize += 1;
+                    Instantiate(CardToHand, transform.position, transform.rotation);
+                }
             }
             else
             {
-                ShuffleDeck();
-                deckSize = 20;
-                cardInDeck1.SetActive(true);
-                cardInDeck2.SetActive(true);
-                cardInDeck3.SetActive(true);
-                cardInDeck4.SetActive(true);
+                if (handSize < 7)
+                {
+                    //Debug.Log("ENTERED SHUFFLE TIME");
+                    ShuffleDeck();
+                    deckSize = 20;
+                    cardInDeck1.SetActive(true);
+                    cardInDeck2.SetActive(true);
+                    cardInDeck3.SetActive(true);
+                    cardInDeck4.SetActive(true);
 
-                yield return new WaitForSeconds(1);
 
-                Instantiate(CardToHand, transform.position, transform.rotation);
+                    handSize += 1;
+                    Instantiate(CardToHand, transform.position, transform.rotation);
+                }
             }
 
         }
