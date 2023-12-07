@@ -31,7 +31,7 @@ public class PlayerDeck : MonoBehaviour
 
         for(int i = 0; i < 20; i++)
         {
-            x = Random.Range(1, 47);
+            x = Random.Range(1, 51);
             deck[i] = CardDatabase.cardList[x];
         }
 
@@ -85,7 +85,7 @@ public class PlayerDeck : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            x = Random.Range(1, 47);
+            x = Random.Range(1, 51);
             deck[i] = CardDatabase.cardList[x];
         }
     }
