@@ -22,8 +22,7 @@ public class LevelSelect : MonoBehaviour
         switch (level)
         {
             case "L1":
-                level1.gameObject.SetActive(false);
-                level2.gameObject.SetActive(true);
+                SceneManager.LoadScene("Main_Scene");
                 break;
             case "L2":
                 level2.gameObject.SetActive(false);
